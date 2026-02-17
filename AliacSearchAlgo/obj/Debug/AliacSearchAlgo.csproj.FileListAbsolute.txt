@@ -1,0 +1,9 @@
+F:\SearchAlgorithm\AliacSearchAlgo\bin\Debug\AliacSearchAlgo.exe
+F:\SearchAlgorithm\AliacSearchAlgo\bin\Debug\AliacSearchAlgo.pdb
+F:\SearchAlgorithm\AliacSearchAlgo\obj\Debug\AliacSearchAlgo.csproj.AssemblyReference.cache
+F:\SearchAlgorithm\AliacSearchAlgo\obj\Debug\AliacSearchAlgo.Form1.resources
+F:\SearchAlgorithm\AliacSearchAlgo\obj\Debug\AliacSearchAlgo.Properties.Resources.resources
+F:\SearchAlgorithm\AliacSearchAlgo\obj\Debug\AliacSearchAlgo.csproj.GenerateResource.cache
+F:\SearchAlgorithm\AliacSearchAlgo\obj\Debug\AliacSearchAlgo.csproj.CoreCompileInputs.cache
+F:\SearchAlgorithm\AliacSearchAlgo\obj\Debug\AliacSearchAlgo.exe
+F:\SearchAlgorithm\AliacSearchAlgo\obj\Debug\AliacSearchAlgo.pdb
