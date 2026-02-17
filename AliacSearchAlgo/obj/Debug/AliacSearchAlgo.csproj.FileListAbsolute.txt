@@ -7,3 +7,12 @@ F:\SearchAlgorithm\AliacSearchAlgo\obj\Debug\AliacSearchAlgo.csproj.GenerateReso
 F:\SearchAlgorithm\AliacSearchAlgo\obj\Debug\AliacSearchAlgo.csproj.CoreCompileInputs.cache
 F:\SearchAlgorithm\AliacSearchAlgo\obj\Debug\AliacSearchAlgo.exe
 F:\SearchAlgorithm\AliacSearchAlgo\obj\Debug\AliacSearchAlgo.pdb
+F:\AliacSearchAlgo\AliacSearchAlgo\bin\Debug\AliacSearchAlgo.exe
+F:\AliacSearchAlgo\AliacSearchAlgo\bin\Debug\AliacSearchAlgo.pdb
+F:\AliacSearchAlgo\AliacSearchAlgo\obj\Debug\AliacSearchAlgo.csproj.AssemblyReference.cache
+F:\AliacSearchAlgo\AliacSearchAlgo\obj\Debug\AliacSearchAlgo.Form1.resources
+F:\AliacSearchAlgo\AliacSearchAlgo\obj\Debug\AliacSearchAlgo.Properties.Resources.resources
+F:\AliacSearchAlgo\AliacSearchAlgo\obj\Debug\AliacSearchAlgo.csproj.GenerateResource.cache
+F:\AliacSearchAlgo\AliacSearchAlgo\obj\Debug\AliacSearchAlgo.csproj.CoreCompileInputs.cache
+F:\AliacSearchAlgo\AliacSearchAlgo\obj\Debug\AliacSearchAlgo.exe
+F:\AliacSearchAlgo\AliacSearchAlgo\obj\Debug\AliacSearchAlgo.pdb
