@@ -502,5 +502,36 @@ namespace AliacSearchAlgo
                 MessageBox.Show("Start and Goal Nodes not set.");
             }
         }
+
+        private async void runWithDelayToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (start != -1 && goal != -1)
+            {
+                ArrayList tnodes = new ArrayList(nodes);
+                search = new Search(tnodes, 2); // BFS
+                search.setStart((Node)tnodes[start]);
+                search.setGoal((Node)tnodes[goal]);
+
+                explored = search.searchone();
+                int delay = 500;
+
+                while ((explored = search.searchone()) != null)
+                {
+                    pictureBox1.Refresh();
+                    Application.DoEvents();
+                    await Task.Delay(delay);
+
+                    if (explored.Goal)
+                    {
+                        MessageBox.Show(explored.Name + " found");
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Start and Goal Nodes not set.");
+            }
+        }
     }
 }
