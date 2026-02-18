@@ -18,7 +18,7 @@ namespace AISearchSample
         {
            if(type==1)//DFS 
             fringe = new Fringe();
-           if(type==2)//BFS
+           if(type==2)//BFS -> to implement 
             fringe = new Fringe2();
             n = nodes;
             
@@ -90,9 +90,11 @@ namespace AISearchSample
             {
                 for (int i = 0; i < n.Count; i++)
                 {
-                    if (((Node)n[i]).Start == true)
+                    Node node = (Node)n[i];
+                    node.Expanded = false;
+                    if (node.Start == true)
                     {
-                        fringe.add(((Node)n[i]), null);
+                        fringe.add(node, null);
                     }
                 }
                 start = true;
@@ -104,9 +106,12 @@ namespace AISearchSample
 
             if ((explorer = fringe.remove()) != null)
             {
+
+                explorer.Expanded = true;
+
                 if (explorer.Goal == true)
                 {
-                    explorer.Expanded = true;
+                    //    explorer.Expanded = true;
                     //    MessageBox.Show("found " + explorer.Name);
                     explored = explorer;
 
