@@ -43,6 +43,7 @@
             this.breadthFirstSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stepToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.fullSearchToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.runWithDelayToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.hillClimbingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fullSearchToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.resetSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,7 +59,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.runWithDelayToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -140,28 +140,28 @@
             this.fullSearchToolStripMenuItem,
             this.runWithDelayToolStripMenuItem});
             this.depthFirstSearchToolStripMenuItem.Name = "depthFirstSearchToolStripMenuItem";
-            this.depthFirstSearchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.depthFirstSearchToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.depthFirstSearchToolStripMenuItem.Text = "Depth First Search";
             this.depthFirstSearchToolStripMenuItem.Click += new System.EventHandler(this.depthFirstSearchToolStripMenuItem_Click);
             // 
             // stepToolStripMenuItem
             // 
             this.stepToolStripMenuItem.Name = "stepToolStripMenuItem";
-            this.stepToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stepToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.stepToolStripMenuItem.Text = "Step";
             this.stepToolStripMenuItem.Click += new System.EventHandler(this.stepToolStripMenuItem_Click);
             // 
             // fullSearchToolStripMenuItem
             // 
             this.fullSearchToolStripMenuItem.Name = "fullSearchToolStripMenuItem";
-            this.fullSearchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fullSearchToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.fullSearchToolStripMenuItem.Text = "Full Search";
             this.fullSearchToolStripMenuItem.Click += new System.EventHandler(this.fullSearchToolStripMenuItem_Click);
             // 
             // runWithDelayToolStripMenuItem
             // 
             this.runWithDelayToolStripMenuItem.Name = "runWithDelayToolStripMenuItem";
-            this.runWithDelayToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.runWithDelayToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.runWithDelayToolStripMenuItem.Text = "Run with Delay";
             this.runWithDelayToolStripMenuItem.Click += new System.EventHandler(this.runWithDelayToolStripMenuItem_Click);
             // 
@@ -172,29 +172,36 @@
             this.fullSearchToolStripMenuItem1,
             this.runWithDelayToolStripMenuItem1});
             this.breadthFirstSearchToolStripMenuItem.Name = "breadthFirstSearchToolStripMenuItem";
-            this.breadthFirstSearchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.breadthFirstSearchToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.breadthFirstSearchToolStripMenuItem.Text = "Breadth First Search";
             // 
             // stepToolStripMenuItem1
             // 
             this.stepToolStripMenuItem1.Name = "stepToolStripMenuItem1";
-            this.stepToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
+            this.stepToolStripMenuItem1.Size = new System.Drawing.Size(153, 22);
             this.stepToolStripMenuItem1.Text = "Step";
             this.stepToolStripMenuItem1.Click += new System.EventHandler(this.stepToolStripMenuItem1_Click);
             // 
             // fullSearchToolStripMenuItem1
             // 
             this.fullSearchToolStripMenuItem1.Name = "fullSearchToolStripMenuItem1";
-            this.fullSearchToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
+            this.fullSearchToolStripMenuItem1.Size = new System.Drawing.Size(153, 22);
             this.fullSearchToolStripMenuItem1.Text = "Full Search";
             this.fullSearchToolStripMenuItem1.Click += new System.EventHandler(this.fullSearchToolStripMenuItem1_Click);
+            // 
+            // runWithDelayToolStripMenuItem1
+            // 
+            this.runWithDelayToolStripMenuItem1.Name = "runWithDelayToolStripMenuItem1";
+            this.runWithDelayToolStripMenuItem1.Size = new System.Drawing.Size(153, 22);
+            this.runWithDelayToolStripMenuItem1.Text = "Run with Delay";
+            this.runWithDelayToolStripMenuItem1.Click += new System.EventHandler(this.runWithDelayToolStripMenuItem1_Click);
             // 
             // hillClimbingToolStripMenuItem
             // 
             this.hillClimbingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fullSearchToolStripMenuItem2});
             this.hillClimbingToolStripMenuItem.Name = "hillClimbingToolStripMenuItem";
-            this.hillClimbingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hillClimbingToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.hillClimbingToolStripMenuItem.Text = "Hill Climbing";
             this.hillClimbingToolStripMenuItem.Click += new System.EventHandler(this.hillClimbingToolStripMenuItem_Click);
             // 
@@ -222,49 +229,49 @@
             // normalToolStripMenuItem
             // 
             this.normalToolStripMenuItem.Name = "normalToolStripMenuItem";
-            this.normalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.normalToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.normalToolStripMenuItem.Text = "Create Nodes";
             this.normalToolStripMenuItem.Click += new System.EventHandler(this.normalToolStripMenuItem_Click);
             // 
             // moveNodeToolStripMenuItem
             // 
             this.moveNodeToolStripMenuItem.Name = "moveNodeToolStripMenuItem";
-            this.moveNodeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.moveNodeToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.moveNodeToolStripMenuItem.Text = "Move Node";
             this.moveNodeToolStripMenuItem.Click += new System.EventHandler(this.moveNodeToolStripMenuItem_Click);
             // 
             // removeNodeToolStripMenuItem
             // 
             this.removeNodeToolStripMenuItem.Name = "removeNodeToolStripMenuItem";
-            this.removeNodeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeNodeToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.removeNodeToolStripMenuItem.Text = "Remove Node";
             this.removeNodeToolStripMenuItem.Click += new System.EventHandler(this.removeNodeToolStripMenuItem_Click);
             // 
             // connectNodesToolStripMenuItem
             // 
             this.connectNodesToolStripMenuItem.Name = "connectNodesToolStripMenuItem";
-            this.connectNodesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.connectNodesToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.connectNodesToolStripMenuItem.Text = "Connect Nodes";
             this.connectNodesToolStripMenuItem.Click += new System.EventHandler(this.connectNodesToolStripMenuItem_Click);
             // 
             // setStartToolStripMenuItem
             // 
             this.setStartToolStripMenuItem.Name = "setStartToolStripMenuItem";
-            this.setStartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setStartToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.setStartToolStripMenuItem.Text = "Set Start Node";
             this.setStartToolStripMenuItem.Click += new System.EventHandler(this.setStartToolStripMenuItem_Click);
             // 
             // setGoalNodeToolStripMenuItem
             // 
             this.setGoalNodeToolStripMenuItem.Name = "setGoalNodeToolStripMenuItem";
-            this.setGoalNodeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setGoalNodeToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.setGoalNodeToolStripMenuItem.Text = "Set Goal Node";
             this.setGoalNodeToolStripMenuItem.Click += new System.EventHandler(this.setGoalNodeToolStripMenuItem_Click);
             // 
             // clearAllNodesToolStripMenuItem
             // 
             this.clearAllNodesToolStripMenuItem.Name = "clearAllNodesToolStripMenuItem";
-            this.clearAllNodesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearAllNodesToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.clearAllNodesToolStripMenuItem.Text = "Clear all nodes";
             this.clearAllNodesToolStripMenuItem.Click += new System.EventHandler(this.clearAllNodesToolStripMenuItem_Click);
             // 
@@ -290,10 +297,10 @@
             // 
             this.label1.AutoEllipsis = true;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(549, 424);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label1.Location = new System.Drawing.Point(606, 424);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 24);
+            this.label1.Size = new System.Drawing.Size(0, 17);
             this.label1.TabIndex = 2;
             // 
             // saveFileDialog1
@@ -304,18 +311,11 @@
             // 
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // runWithDelayToolStripMenuItem1
-            // 
-            this.runWithDelayToolStripMenuItem1.Name = "runWithDelayToolStripMenuItem1";
-            this.runWithDelayToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.runWithDelayToolStripMenuItem1.Text = "Run with Delay";
-            this.runWithDelayToolStripMenuItem1.Click += new System.EventHandler(this.runWithDelayToolStripMenuItem1_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(685, 461);
+            this.ClientSize = new System.Drawing.Size(685, 447);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
