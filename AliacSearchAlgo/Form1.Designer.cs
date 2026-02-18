@@ -58,6 +58,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.runWithDelayToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -168,7 +169,8 @@
             // 
             this.breadthFirstSearchToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.stepToolStripMenuItem1,
-            this.fullSearchToolStripMenuItem1});
+            this.fullSearchToolStripMenuItem1,
+            this.runWithDelayToolStripMenuItem1});
             this.breadthFirstSearchToolStripMenuItem.Name = "breadthFirstSearchToolStripMenuItem";
             this.breadthFirstSearchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.breadthFirstSearchToolStripMenuItem.Text = "Breadth First Search";
@@ -302,6 +304,13 @@
             // 
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // runWithDelayToolStripMenuItem1
+            // 
+            this.runWithDelayToolStripMenuItem1.Name = "runWithDelayToolStripMenuItem1";
+            this.runWithDelayToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.runWithDelayToolStripMenuItem1.Text = "Run with Delay";
+            this.runWithDelayToolStripMenuItem1.Click += new System.EventHandler(this.runWithDelayToolStripMenuItem1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -353,6 +362,7 @@
         private System.Windows.Forms.ToolStripMenuItem fullSearchToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem fullSearchToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem runWithDelayToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem runWithDelayToolStripMenuItem1;
     }
 }
 
