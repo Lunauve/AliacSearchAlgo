@@ -243,10 +243,18 @@ namespace AliacSearchAlgo
                else
                 g.DrawArc(Pens.Yellow, temp.X, temp.Y, 10, 10, 0, 360);
                if(x==from)
-                 g.DrawArc(Pens.White, temp.X, temp.Y, 10, 10, 0, 360);
-              
+                g.DrawArc(Pens.White, temp.X, temp.Y, 10, 10, 0, 360);
 
-               ArrayList connects = temp.getNeighbor();
+
+                g.DrawString(
+                     temp.Name,
+                     new Font("Segoe UI", 10),
+                     Brushes.Black,
+                     temp.X + 12,
+                     temp.Y + 2
+                );
+
+                    ArrayList connects = temp.getNeighbor();
                for (int y = 0; y < connects.Count; y++)
                {
                    Node neighbor = (Node)connects[y];
@@ -255,12 +263,36 @@ namespace AliacSearchAlgo
 
                if (temp.Expanded)
                    g.FillEllipse(Brushes.Red, temp.X-5, temp.Y-5, 20, 20);
-               if (x == start)
-                   g.DrawString("S", new Font("Segoe UI", 20), Brushes.Yellow, temp.X+5, temp.Y+5);
-                if (x == goal)
-                    g.DrawString("G", new Font("Segoe UI", 20), Brushes.Green, temp.X+5, temp.Y+5);
+               if (x == start) {
+                  int cx = temp.X + 5;
+                  int cy = temp.Y + 5;
+                  g.FillRectangle(Brushes.Brown, cx - 5, cy, 10, 10);
+                  Point[] roof = new Point[] {
+                    new Point(cx - 6, cy),
+                    new Point(cx + 6, cy),
+                    new Point(cx, cy - 8)
+                  };
+                  g.FillPolygon(Brushes.Red, roof);
+               }
 
+               if (x == goal) {
+                  int cx = temp.X + 5;
+                  int cy = temp.Y + 5;
+                  float outerRadius = 8;
+                  float innerRadius = 3;
+                  PointF[] starPoints = new PointF[10];
+                  for (int i = 0; i < 10; i++) {
+                     double angle = i * Math.PI / 5 - Math.PI / 2;
+                     float radius = (i % 2 == 0) ? outerRadius : innerRadius;
+                     starPoints[i] = new PointF(
+                     cx + (float)(Math.Cos(angle) * radius),
+                     cy + (float)(Math.Sin(angle) * radius)
+                     );
+                  }
+                  g.FillPolygon(Brushes.Gold, starPoints);
+               }
             }
+
             Node path = explored;
             while (path != null && path.Origin != null)
             {
