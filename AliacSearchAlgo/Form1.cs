@@ -263,33 +263,62 @@ namespace AliacSearchAlgo
 
                if (temp.Expanded)
                    g.FillEllipse(Brushes.Red, temp.X-5, temp.Y-5, 20, 20);
+
                if (x == start) {
-                  int cx = temp.X + 5;
-                  int cy = temp.Y + 5;
-                  g.FillRectangle(Brushes.Brown, cx - 5, cy, 10, 10);
-                  Point[] roof = new Point[] {
-                    new Point(cx - 6, cy),
-                    new Point(cx + 6, cy),
-                    new Point(cx, cy - 8)
-                  };
-                  g.FillPolygon(Brushes.Red, roof);
+                   int cx = temp.X + 5;
+                   int cy = temp.Y + 5;
+
+                   int circleRadius = 6;
+                   int totalHeight = 20;
+
+                   int circleTopY = cy - totalHeight;
+
+                   g.FillEllipse(
+                       Brushes.SeaGreen,
+                       cx - circleRadius,
+                       circleTopY,
+                       circleRadius * 2,
+                       circleRadius * 2
+                   );
+
+                   Point[] tip = new Point[] {
+                       new Point(cx - 4, circleTopY + circleRadius * 2 - 2),
+                       new Point(cx + 4, circleTopY + circleRadius * 2 - 2),
+                       new Point(cx, cy - 2)
+                   };
+
+                   g.FillPolygon(Brushes.SeaGreen, tip);
+
+                   g.FillEllipse(
+                       Brushes.White,
+                       cx - 2,
+                       circleTopY + circleRadius - 2,
+                       4,
+                       4
+                   );
                }
 
                if (x == goal) {
-                  int cx = temp.X + 5;
-                  int cy = temp.Y + 5;
-                  float outerRadius = 8;
-                  float innerRadius = 3;
-                  PointF[] starPoints = new PointF[10];
-                  for (int i = 0; i < 10; i++) {
-                     double angle = i * Math.PI / 5 - Math.PI / 2;
-                     float radius = (i % 2 == 0) ? outerRadius : innerRadius;
-                     starPoints[i] = new PointF(
-                     cx + (float)(Math.Cos(angle) * radius),
-                     cy + (float)(Math.Sin(angle) * radius)
-                     );
-                  }
-                  g.FillPolygon(Brushes.Gold, starPoints);
+                   int cx = temp.X + 5;
+                   int cy = temp.Y + 5;
+
+                   int poleHeight = 18;
+
+                   g.DrawLine(
+                        new Pen(Color.Black, 2),
+                        cx,
+                        cy - poleHeight,
+                        cx,
+                        cy - 2
+                   );
+
+                   Point[] flag = new Point[] {
+                        new Point(cx, cy - poleHeight),
+                        new Point(cx + 12, cy - poleHeight + 4),
+                        new Point(cx, cy - poleHeight + 8)
+                   };
+
+                   g.FillPolygon(Brushes.Red, flag);
                }
             }
 
