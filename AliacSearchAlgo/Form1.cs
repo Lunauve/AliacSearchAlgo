@@ -264,7 +264,7 @@ namespace AliacSearchAlgo
                }
 
                if (temp.Expanded)
-                   g.FillEllipse(Brushes.Red, temp.X-5, temp.Y-5, 20, 20);
+                   g.FillEllipse(Brushes.Red, temp.X-5, temp.Y-5, 16, 16);
 
                if (x == start) {
                    int cx = temp.X + 5;
@@ -325,11 +325,11 @@ namespace AliacSearchAlgo
 
                if (showHillDistances && temp.TempDistance > 0) {
                    g.DrawString(
-                        $"({temp.TempDistance:F1})",
-                        new Font("Segoe UI", 10),
-                        Brushes.Black,
+                        $"   ({temp.TempDistance:F1})",
+                        new Font("Segoe UI", 9),
+                        Brushes.DarkBlue,
                         temp.X + 12,
-                        temp.Y + 20
+                        temp.Y + 2
                    );
                }
             }
@@ -667,45 +667,6 @@ namespace AliacSearchAlgo
             }
         }
 
-        /*private async void runWithDelayToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            if (start != -1 && goal != -1)
-            {
-                ArrayList tnodes = new ArrayList(nodes);
-                hillsearch = new HillSearch(tnodes, start, goal);
-
-                Node current = hillsearch.searchone();
-                explored = current;
-                int delay = 500;
-
-                while ((current = hillsearch.searchone()) != null)
-                {
-                    current.Origin = explored;
-
-                    explored = current;
-
-                    pictureBox1.Refresh();
-                    Application.DoEvents();
-                    await Task.Delay(delay);
-
-                    if (current.Goal)
-                    {
-                        MessageBox.Show(current.Name + " found");
-                        break;
-                    }
-                }
-
-                if (current == null || !current.Goal)
-                {
-                    MessageBox.Show("Reached local maximum, goal not found.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Start and Goal Nodes not set.");
-            }
-        }*/
-
         private async void runWithDelayToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             if (start != -1 && goal != -1)
@@ -715,30 +676,27 @@ namespace AliacSearchAlgo
                 showHillDistances = true;
 
                 Node current = hillsearch.searchone();
-                explored = current; // for drawing green path
+                explored = current;
                 int delay = 500;
 
                 while (current != null)
                 {
-                    // Get neighbors of current
                     ArrayList neighbors = current.getNeighbor();
 
                     foreach (Node neighbor in neighbors)
                     {
-                        // Calculate distance to goal (assuming Euclidean)
+                        // Calculate distance to goal (Euclidean)
                         Node goalNode = (Node)tnodes[goal];
                         neighbor.TempDistance = Math.Sqrt(
                             Math.Pow(neighbor.X - goalNode.X, 2) +
                             Math.Pow(neighbor.Y - goalNode.Y, 2)
                         );
 
-                        // Refresh to show distance next to neighbor
                         pictureBox1.Refresh();
                         Application.DoEvents();
-                        await Task.Delay(delay); // visualize each neighbor one by one
+                        await Task.Delay(delay);
                     }
 
-                    // Pick the next node according to hill climbing logic
                     Node next = hillsearch.searchone();
 
                     if (next != null)
