@@ -740,10 +740,6 @@ namespace AliacSearchAlgo
                     }
                 }
 
-                if (current == null || !current.Goal)
-                {
-                    MessageBox.Show("Reached local maximum, goal not found.");
-                }
                 showHillDistances = false;
             }
             else
