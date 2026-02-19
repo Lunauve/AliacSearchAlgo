@@ -327,6 +327,7 @@
             this.runWithDelayToolStripMenuItem2.Name = "runWithDelayToolStripMenuItem2";
             this.runWithDelayToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.runWithDelayToolStripMenuItem2.Text = "Run with Delay";
+            this.runWithDelayToolStripMenuItem2.Click += new System.EventHandler(this.runWithDelayToolStripMenuItem2_Click);
             // 
             // Form1
             // 
