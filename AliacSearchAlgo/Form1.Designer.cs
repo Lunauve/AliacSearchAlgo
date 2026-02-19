@@ -59,6 +59,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.stepToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.runWithDelayToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -140,7 +142,7 @@
             this.fullSearchToolStripMenuItem,
             this.runWithDelayToolStripMenuItem});
             this.depthFirstSearchToolStripMenuItem.Name = "depthFirstSearchToolStripMenuItem";
-            this.depthFirstSearchToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.depthFirstSearchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.depthFirstSearchToolStripMenuItem.Text = "Depth First Search";
             this.depthFirstSearchToolStripMenuItem.Click += new System.EventHandler(this.depthFirstSearchToolStripMenuItem_Click);
             // 
@@ -172,43 +174,45 @@
             this.fullSearchToolStripMenuItem1,
             this.runWithDelayToolStripMenuItem1});
             this.breadthFirstSearchToolStripMenuItem.Name = "breadthFirstSearchToolStripMenuItem";
-            this.breadthFirstSearchToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.breadthFirstSearchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.breadthFirstSearchToolStripMenuItem.Text = "Breadth First Search";
             // 
             // stepToolStripMenuItem1
             // 
             this.stepToolStripMenuItem1.Name = "stepToolStripMenuItem1";
-            this.stepToolStripMenuItem1.Size = new System.Drawing.Size(153, 22);
+            this.stepToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.stepToolStripMenuItem1.Text = "Step";
             this.stepToolStripMenuItem1.Click += new System.EventHandler(this.stepToolStripMenuItem1_Click);
             // 
             // fullSearchToolStripMenuItem1
             // 
             this.fullSearchToolStripMenuItem1.Name = "fullSearchToolStripMenuItem1";
-            this.fullSearchToolStripMenuItem1.Size = new System.Drawing.Size(153, 22);
+            this.fullSearchToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.fullSearchToolStripMenuItem1.Text = "Full Search";
             this.fullSearchToolStripMenuItem1.Click += new System.EventHandler(this.fullSearchToolStripMenuItem1_Click);
             // 
             // runWithDelayToolStripMenuItem1
             // 
             this.runWithDelayToolStripMenuItem1.Name = "runWithDelayToolStripMenuItem1";
-            this.runWithDelayToolStripMenuItem1.Size = new System.Drawing.Size(153, 22);
+            this.runWithDelayToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.runWithDelayToolStripMenuItem1.Text = "Run with Delay";
             this.runWithDelayToolStripMenuItem1.Click += new System.EventHandler(this.runWithDelayToolStripMenuItem1_Click);
             // 
             // hillClimbingToolStripMenuItem
             // 
             this.hillClimbingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fullSearchToolStripMenuItem2});
+            this.stepToolStripMenuItem2,
+            this.fullSearchToolStripMenuItem2,
+            this.runWithDelayToolStripMenuItem2});
             this.hillClimbingToolStripMenuItem.Name = "hillClimbingToolStripMenuItem";
-            this.hillClimbingToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.hillClimbingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.hillClimbingToolStripMenuItem.Text = "Hill Climbing";
             this.hillClimbingToolStripMenuItem.Click += new System.EventHandler(this.hillClimbingToolStripMenuItem_Click);
             // 
             // fullSearchToolStripMenuItem2
             // 
             this.fullSearchToolStripMenuItem2.Name = "fullSearchToolStripMenuItem2";
-            this.fullSearchToolStripMenuItem2.Size = new System.Drawing.Size(131, 22);
+            this.fullSearchToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.fullSearchToolStripMenuItem2.Text = "Full Search";
             this.fullSearchToolStripMenuItem2.Click += new System.EventHandler(this.fullSearchToolStripMenuItem2_Click);
             // 
@@ -311,6 +315,19 @@
             // 
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // stepToolStripMenuItem2
+            // 
+            this.stepToolStripMenuItem2.Name = "stepToolStripMenuItem2";
+            this.stepToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.stepToolStripMenuItem2.Text = "Step";
+            this.stepToolStripMenuItem2.Click += new System.EventHandler(this.stepToolStripMenuItem2_Click);
+            // 
+            // runWithDelayToolStripMenuItem2
+            // 
+            this.runWithDelayToolStripMenuItem2.Name = "runWithDelayToolStripMenuItem2";
+            this.runWithDelayToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.runWithDelayToolStripMenuItem2.Text = "Run with Delay";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -363,6 +380,8 @@
         private System.Windows.Forms.ToolStripMenuItem fullSearchToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem runWithDelayToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem runWithDelayToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem stepToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem runWithDelayToolStripMenuItem2;
     }
 }
 
