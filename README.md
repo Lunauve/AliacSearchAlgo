@@ -2,8 +2,8 @@
 
 This project is a simulation of graph search algorithms in C# WinForms.  
 
-**Original Work:** This project was originally developed by **Prof. Chris Jordan Aliac**.  
-**Enhancements:** For this assignment, I, **Alyssa Joyce Tan**, have implemented and improved the following:  
+**Original Work:** This project was originally developed by <span style="color: green; font-weight: bold;">Prof. Chris Jordan Aliac</span>.  
+**Enhancements:** For this assignment, I, <span style="color: green; font-weight: bold;">Alyssa Joyce Tan</span>, have implemented and improved the following:  
 
 - **Breadth-First Search (BFS)** – Added as part of the assignment to explore uninformed search strategies.  
 - **Hill Climb Search (refactored)** – Updated to use a heuristic: it chooses neighbors that are nearer to the goal node.  
