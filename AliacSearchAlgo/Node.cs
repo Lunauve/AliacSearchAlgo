@@ -18,6 +18,8 @@ namespace AISearchSample
         private int y;
         private Node origin;
         private double tempDistance;
+        private bool checking;
+
         public Node() {
             name = "";
             value = 0;
@@ -136,6 +138,12 @@ namespace AISearchSample
         {
             get { return tempDistance; }
             set { tempDistance = value; }
+        }
+
+        public bool Checking
+        {
+            get { return this.checking; }
+            set { this.checking = value; }
         }
 
     }

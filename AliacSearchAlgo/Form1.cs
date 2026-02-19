@@ -239,8 +239,9 @@ namespace AliacSearchAlgo
             if(nodes!=null)
             for (int x = 0; x < nodes.Count; x++)
             {
-                Node temp = (Node)nodes[x];
-               if(temp.Moved==false)
+               Node temp = (Node)nodes[x];
+
+               if (temp.Moved==false)
                 g.DrawArc(Pens.Black, temp.X, temp.Y, 10, 10, 0, 360);
                else
                 g.DrawArc(Pens.Yellow, temp.X, temp.Y, 10, 10, 0, 360);
@@ -256,11 +257,19 @@ namespace AliacSearchAlgo
                      temp.Y + 2
                 );
 
-                    ArrayList connects = temp.getNeighbor();
+               ArrayList connects = temp.getNeighbor();
                for (int y = 0; y < connects.Count; y++)
                {
                    Node neighbor = (Node)connects[y];
                    g.DrawLine(Pens.Black, temp.X + 5, temp.Y + 5, neighbor.X + 5, neighbor.Y + 5);
+               }
+
+               // highlight neighbor node that is being checked for distance.
+               if (showHillDistances && temp.Checking)
+               {
+                   int glowSize = 18;
+                   int offset = (glowSize - 10) / 2;
+                   g.FillEllipse(Brushes.DeepSkyBlue, temp.X - offset, temp.Y - offset, glowSize, glowSize);
                }
 
                if (temp.Expanded)
@@ -323,7 +332,10 @@ namespace AliacSearchAlgo
                    g.FillPolygon(Brushes.Red, flag);
                }
 
-               if (showHillDistances && temp.TempDistance > 0) {
+               // show distance for neighbor node being checked.
+               if (showHillDistances && (temp.TempDistance > 0 || (x == goal && (temp.Checking || temp == explored)))) {
+                        double displayDistance = (x == goal && (temp.Checking || temp == explored)) ? 0 : temp.TempDistance;
+
                    g.DrawString(
                         $"   ({temp.TempDistance:F1})",
                         new Font("Segoe UI", 9),
@@ -677,7 +689,7 @@ namespace AliacSearchAlgo
 
                 Node current = hillsearch.searchone();
                 explored = current;
-                int delay = 500;
+                int delay = 1000;
 
                 while (current != null)
                 {
@@ -685,7 +697,12 @@ namespace AliacSearchAlgo
 
                     foreach (Node neighbor in neighbors)
                     {
-                        // Calculate distance to goal (Euclidean)
+                        neighbor.Checking = true;
+
+                        pictureBox1.Refresh();
+                        Application.DoEvents();
+                        await Task.Delay(delay / 2); 
+
                         Node goalNode = (Node)tnodes[goal];
                         neighbor.TempDistance = Math.Sqrt(
                             Math.Pow(neighbor.X - goalNode.X, 2) +
@@ -694,7 +711,12 @@ namespace AliacSearchAlgo
 
                         pictureBox1.Refresh();
                         Application.DoEvents();
-                        await Task.Delay(delay);
+                        await Task.Delay(delay / 2);
+
+                        neighbor.Checking = false;
+
+                        pictureBox1.Refresh();
+                        Application.DoEvents();
                     }
 
                     Node next = hillsearch.searchone();
