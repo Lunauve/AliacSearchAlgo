@@ -17,6 +17,7 @@ namespace AISearchSample
         private int x;
         private int y;
         private Node origin;
+        private double tempDistance;
         public Node() {
             name = "";
             value = 0;
@@ -130,5 +131,12 @@ namespace AISearchSample
                 result= true;
             return result;
         }
+
+        public double TempDistance
+        {
+            get { return tempDistance; }
+            set { tempDistance = value; }
+        }
+
     }
 }

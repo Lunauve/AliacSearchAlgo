@@ -27,6 +27,7 @@ namespace AliacSearchAlgo
         int to;
         int start;
         int goal;
+        bool showHillDistances = false;
         Node explored;
         Search search;
         HillSearch hillsearch;
@@ -321,6 +322,16 @@ namespace AliacSearchAlgo
 
                    g.FillPolygon(Brushes.Red, flag);
                }
+
+               if (showHillDistances && temp.TempDistance > 0) {
+                   g.DrawString(
+                        $"({temp.TempDistance:F1})",
+                        new Font("Segoe UI", 10),
+                        Brushes.Black,
+                        temp.X + 12,
+                        temp.Y + 20
+                   );
+               }
             }
 
             Node path = explored;
@@ -448,6 +459,7 @@ namespace AliacSearchAlgo
             goal = -1;
             explored = null;
             search = null;
+            showHillDistances = false;
             for (int y = 0; y < nodes.Count; y++)
             {
                 ((Node)nodes[y]).Moved = false;
@@ -455,8 +467,7 @@ namespace AliacSearchAlgo
                 ((Node)nodes[y]).Goal = false;
                 ((Node)nodes[y]).Origin = null;
                 ((Node)nodes[y]).Start = false;
-               
-
+                ((Node)nodes[y]).TempDistance = 0;
             }
                 pictureBox1.Refresh();
         }
@@ -656,7 +667,7 @@ namespace AliacSearchAlgo
             }
         }
 
-        private async void runWithDelayToolStripMenuItem2_Click(object sender, EventArgs e)
+        /*private async void runWithDelayToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             if (start != -1 && goal != -1)
             {
@@ -693,6 +704,73 @@ namespace AliacSearchAlgo
             {
                 MessageBox.Show("Start and Goal Nodes not set.");
             }
+        }*/
+
+        private async void runWithDelayToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (start != -1 && goal != -1)
+            {
+                ArrayList tnodes = new ArrayList(nodes);
+                hillsearch = new HillSearch(tnodes, start, goal);
+                showHillDistances = true;
+
+                Node current = hillsearch.searchone();
+                explored = current; // for drawing green path
+                int delay = 500;
+
+                while (current != null)
+                {
+                    // Get neighbors of current
+                    ArrayList neighbors = current.getNeighbor();
+
+                    foreach (Node neighbor in neighbors)
+                    {
+                        // Calculate distance to goal (assuming Euclidean)
+                        Node goalNode = (Node)tnodes[goal];
+                        neighbor.TempDistance = Math.Sqrt(
+                            Math.Pow(neighbor.X - goalNode.X, 2) +
+                            Math.Pow(neighbor.Y - goalNode.Y, 2)
+                        );
+
+                        // Refresh to show distance next to neighbor
+                        pictureBox1.Refresh();
+                        Application.DoEvents();
+                        await Task.Delay(delay); // visualize each neighbor one by one
+                    }
+
+                    // Pick the next node according to hill climbing logic
+                    Node next = hillsearch.searchone();
+
+                    if (next != null)
+                    {
+                        next.Origin = explored;
+                    }
+
+                    explored = next;
+                    current = next;
+
+                    pictureBox1.Refresh();
+                    Application.DoEvents();
+                    await Task.Delay(delay);
+
+                    if (current != null && current.Goal)
+                    {
+                        MessageBox.Show(current.Name + " found");
+                        break;
+                    }
+                }
+
+                if (current == null || !current.Goal)
+                {
+                    MessageBox.Show("Reached local maximum, goal not found.");
+                }
+                showHillDistances = false;
+            }
+            else
+            {
+                MessageBox.Show("Start and Goal Nodes not set.");
+            }
         }
+
     }
 }
