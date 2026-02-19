@@ -21,9 +21,9 @@ namespace AliacSearchAlgo
             y=Math.Abs((((Node)nodes[start]).Y)-(((Node)nodes[g]).Y));
             heu[g] = Math.Sqrt((x * x) + (y * y));
         }
-        
-           // return heu;
 
+            // return heu;
+            // Alyssa: this is unused.
         }
     }
 }

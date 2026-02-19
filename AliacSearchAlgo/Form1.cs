@@ -11,6 +11,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace AliacSearchAlgo
 {
@@ -521,17 +522,40 @@ namespace AliacSearchAlgo
         {
             if (start != -1 && goal != -1)
             {
-                
-                ArrayList tnodes = new ArrayList(nodes);
-                hillsearch = new HillSearch(tnodes);
-                hillsearch.setStart(((Node)tnodes[start]));
-                explored = ((Node)tnodes[start]);
-                hillsearch.setGoal(((Node)tnodes[goal]));
-                explored = hillsearch.search();
-                pictureBox1.Refresh();
+                try
+                {
+                    ArrayList tnodes = new ArrayList(nodes);
+                    HillSearch hillsearch = new HillSearch(tnodes, start, goal);
+
+                    // Perform the hill climb search
+                    Node resultNode = hillsearch.search();
+
+                    // Set explored to the goal node so the Paint method can draw the green line
+                    explored = resultNode;
+
+                    if (explored != null)
+                    {
+                        Node pathNode = explored;
+                        while (pathNode != null)
+                        {
+                            pathNode.Expanded = true; // mark visited nodes
+                            pathNode = pathNode.Origin; // follow the path for drawing
+                        }
+                    }
+
+                    pictureBox1.Refresh();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
             }
-            else { MessageBox.Show("Start or Goal nodes not Set."); }
+            else
+            {
+                MessageBox.Show("Start or Goal nodes not set.");
+            }
         }
+
 
         private async void runWithDelayToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -592,6 +616,48 @@ namespace AliacSearchAlgo
             else
             {
                 MessageBox.Show("Start and Goal Nodes not set.");
+            }
+        }
+
+        private void stepToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (start != -1 && goal != -1)
+            {
+                try
+                {
+                    // Initialize hillStep on first click
+                    if (hillsearch == null)
+                    {
+                        ArrayList tnodes = new ArrayList(nodes);
+                        hillsearch = new HillSearch(tnodes, start, goal);
+                        explored = null; // clear previous explored
+                    }
+
+                    // Perform one step
+                    Node stepNode = hillsearch.searchone();
+
+                    if (stepNode != null)
+                    {
+                        explored = stepNode; // for green path drawing
+                        pictureBox1.Refresh();
+
+                        // Check if goal reached
+                        if (stepNode.Goal)
+                            MessageBox.Show("Goal reached: " + stepNode.Name);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No further steps possible (local maximum reached).");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Start or Goal nodes not set.");
             }
         }
     }

@@ -1,107 +1,127 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using AISearchSample;
-using System.Windows.Forms;
+﻿using AISearchSample;
+using System;
 using System.Collections;
+using System.Windows.Forms;
+using static System.Windows.Forms.AxHost;
 
 namespace AliacSearchAlgo
 {
-
     class HillSearch
     {
+        private ArrayList nodes;
+        private Node startNode;
+        private Node goalNode;
 
-        ArrayList n;
-        bool start=false;
+        private Node currentNode = null;
+        private bool started = false;
 
-        public HillSearch(ArrayList nodes) 
+        public HillSearch(ArrayList nodes, int startIndex, int goalIndex)
         {
-             n = nodes;
+            this.nodes = nodes;
+
+            if (startIndex < 0 || startIndex >= nodes.Count || goalIndex < 0 || goalIndex >= nodes.Count)
+                throw new Exception("Invalid start or goal index.");
+
+            startNode = (Node)nodes[startIndex];
+            goalNode = (Node)nodes[goalIndex];
+
+            startNode.Start = true;
+            goalNode.Goal = true;
         }
 
-        public void setStart(Node n)
+        public Node search()
         {
-            n.Start = true;
-        }
+            Node current = startNode;
+            current.Expanded = true;
 
-        public void setGoal(Node n) 
-        {
-            n.Goal = true;
-        }
-
-        public Node search() 
-        {
-            ArrayList temp = null ;
-            double []heuristics;
-            int s=0;
-            // find start index
-            if (!start)
+            while (!current.Goal)
             {
-                for (int i = 0; i < n.Count; i++)
-                {
-                    if (((Node)n[i]).Start == true)
-                    {
-                        s = i;
-                    }
-                }
-                start = true;
-            }
+                ArrayList neighbors = current.getNeighbor();
 
-            do
-            {
+                Node bestNeighbor = null;
+                double bestHeuristic = double.MaxValue;
 
-                temp = ((Node)n[s]).getNeighbor();
-                ((Node)n[s]).Expanded = true;
-                heuristics = calculate(temp, ((Node)n[s]));
-                double min = -1;
-                int nodeloc = 0;
-                for (int y = 0; y < temp.Count; y++)
+                // Heuristic: Neighbor that is closest to goal.
+                foreach (Node neighbor in neighbors)
                 {
-                    if (((Node)temp[y]).Expanded == false)
+                    if (!neighbor.Expanded)
                     {
-                        if (min == -1.0)
-                            min = heuristics[y];
-                        if (heuristics[y] <= min)
+                        double h = DistanceToGoal(neighbor, goalNode);
+                        if (h < bestHeuristic)
                         {
-                            min = heuristics[y];
-                            nodeloc = y;
-                         }
+                            bestHeuristic = h;
+                            bestNeighbor = neighbor;
+                        }
                     }
                 }
-                for (int x = 0; x < n.Count; x++)
+
+                // Local maximum.
+                if (bestNeighbor == null || DistanceToGoal(current, goalNode) <= bestHeuristic)
                 {
-                    if (((Node)n[x]).Name.Equals(((Node)temp[nodeloc]).Name))
-                    {
-                       ((Node)n[x]).Origin = ((Node)n[s]);
-                        s = x;
-                    }
-                                
+                    MessageBox.Show("Reached local maximum, goal not found.");
+                    return null;
                 }
 
-            } while (((Node)n[s]).Goal != true);
-
-            MessageBox.Show("found" + ((Node)n[s]).Name);
-            ((Node)n[s]).Expanded = true;
-            return ((Node)n[s]);
-   }
-
-        public double[] calculate(ArrayList nodes, Node start)
-        {
-            double[] heu = new double[nodes.Count];
-            int x = 0;
-            int y = 0;
-            for (int g = 0; g < heu.Length; g++)
-            {
-                x = Math.Abs(start.X) - (((Node)nodes[g]).X);
-                y = Math.Abs(start.Y) - (((Node)nodes[g]).Y);
-                heu[g] = Math.Sqrt((x * x) + (y * y));
+                bestNeighbor.Origin = current;
+                bestNeighbor.Expanded = true;
+                current = bestNeighbor;
             }
 
-            return heu;
-
+            MessageBox.Show("Goal found: " + current.Name);
+            return current;
         }
 
+        public Node searchone()
+        {
+            if (!started)
+            {
+                currentNode = startNode;
+                currentNode.Expanded = true;
+                started = true;
+                return currentNode;
+            }
 
+            if (currentNode.Goal)
+                return currentNode;
+
+            ArrayList neighbors = currentNode.getNeighbor();
+            Node bestNeighbor = null;
+            double bestHeuristic = double.MaxValue;
+
+            // Heuristic: Neighbor that is closest to goal.
+            foreach (Node neighbor in neighbors)
+            {
+                if (!neighbor.Expanded)
+                {
+                    double h = DistanceToGoal(neighbor, goalNode);
+                    if (h < bestHeuristic)
+                    {
+                        bestHeuristic = h;
+                        bestNeighbor = neighbor;
+                    }
+                }
+            }
+
+            // Local maximum.
+            if (bestNeighbor == null || DistanceToGoal(currentNode, goalNode) <= bestHeuristic)
+            {
+                MessageBox.Show("Reached local maximum, cannot proceed further.");
+                return null;
+            }
+
+            bestNeighbor.Origin = currentNode;
+            bestNeighbor.Expanded = true;
+            currentNode = bestNeighbor;
+
+            return currentNode;
+        }
+
+        // Node distance to goal.
+        private double DistanceToGoal(Node node, Node goal)
+        {
+            int dx = node.X - goal.X;
+            int dy = node.Y - goal.Y;
+            return Math.Sqrt(dx * dx + dy * dy);
+        }
     }
 }
