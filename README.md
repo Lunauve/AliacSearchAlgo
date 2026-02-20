@@ -17,7 +17,7 @@ These complement the original **Depth-First Search (DFS)** provided in the base 
 - **Hill Climb Search:** Refactored with a heuristic for goal-directed neighbor selection.  
 - Visual simulation of node exploration for each algorithm.
 
-## Simulation GIFs
+## Simulations
 
 ### Depth-First Search
 ![DFS Simulation](./gifs/dfs_simulation.gif)
